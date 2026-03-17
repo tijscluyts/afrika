@@ -45,6 +45,11 @@ class FarmingController extends Controller
         return view('profile', compact('farmer', 'sensors'));
     }
 
+    public function map($id = null)
+    {
+        // Verwijst naar resources/views/farm-map.blade.php
+        return view('farm-map', ['id' => $id]);
+
     public function login(Request $request)
     {
         $email = $request->input('email');
