@@ -6,8 +6,54 @@
     <title>AggroCoders | Farm Map</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            /* Use asset helper for correct path resolution */
+            background-image: linear-gradient(rgba(241, 245, 249, 0.5), rgba(241, 245, 249, 0.5)), url('{{ asset('99.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .industrial-grid {
+            background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        [x-cloak] {
+            display: none !important;
+        }
+
+        .moisture-gradient {
+            background: linear-gradient(90deg, #ef4444 0%, #facc15 15%, #3b82f6 60%, #10b981 100%);
+        }
+
+        /* Temperatuur gradiënt: Rood (5°C) -> Groen (Optimaal) -> Rood (40°C) */
+        .temp-gradient {
+            background: linear-gradient(90deg, #ef4444 0%, #10b981 50%, #ef4444 100%);
+        }
+
+        /* VERANDERDE ANIMATIE: Van links naar rechts */
+        @keyframes scan-ltr {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(1200%);
+            }
+        }
+
+        .full-scanline {
+            width: 120px;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(16, 185, 129, 0.1), transparent);
+            animation: scan-ltr 6s linear infinite;
+        }
+
         .farm-bg {
+            /* Fallback or secondary background if needed */
             background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
@@ -16,13 +62,27 @@
 </head>
 <body class="bg-stone-100 font-sans h-screen flex flex-col">
 
-<nav class="bg-green-800 text-white p-4 shadow-lg z-50">
-    <div class="container mx-auto flex justify-between items-center">
-        <h1 class="text-2xl font-bold tracking-tighter">AGGRO<span class="text-orange-400">CODERS</span></h1>
-        <div class="flex space-x-4 text-sm">
-            <a href="/" class="hover:text-orange-300 transition">Dashboard</a>
-            <a href="/farm-map" class="text-orange-400 font-bold border-b-2 border-orange-400">Live Map</a>
+<nav
+    class="sticky top-0 z-50 px-8 py-4 flex justify-between items-center bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <div class="flex items-center gap-2">
+        <!-- Direct link construction to ensure correct ID passing -->
+        <a href="{{ $id ? '/profile/'.$id : '/' }}" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <div class="bg-green-700 p-2 rounded-xl text-white shadow-lg">
+                <i data-lucide="shield-check" class="w-6 h-6"></i>
+            </div>
+            <span class="font-black text-xl tracking-tighter uppercase italic text-slate-800">Aggro<span
+                    class="text-green-700">Secure</span></span>
+        </a>
+    </div>
+    <div class="flex items-center gap-6">
+        <div class="hidden md:flex flex-col items-end">
+            <span class="text-[9px] font-black text-slate-400 uppercase leading-none">System Status</span>
+            <span class="text-xs font-mono font-bold text-green-700 italic tracking-tighter">SECURE_LINK_ACTIVE</span>
         </div>
+        <a href="/"
+           class="p-2 border border-red-100 rounded-lg text-red-500 hover:bg-red-500 hover:text-white transition-all">
+            <i data-lucide="power" class="w-5 h-5"></i>
+        </a>
     </div>
 </nav>
 
@@ -50,27 +110,29 @@
             <!-- Zone 1: Main Field (Large area) -->
             <div class="md:col-span-2 md:row-span-2">
                 <div class="h-full w-full">
-                    <x-humidity-card location="Maize Field (North)" mode="map" />
+                    <x-humidity-card location="Maize Field (North)" mode="map"/>
                 </div>
             </div>
 
             <!-- Zone 2: Smaller Patch -->
             <div class="md:col-span-1 md:row-span-1">
-                 <div class="h-full w-full">
-                    <x-humidity-card location="Vegetable Patch" mode="map" />
-                 </div>
+                <div class="h-full w-full">
+                    <x-humidity-card location="Vegetable Patch" mode="map"/>
+                </div>
             </div>
 
             <!-- Zone 3: Smaller Patch -->
             <div class="md:col-span-1 md:row-span-1">
-                 <div class="h-full w-full">
-                    <x-humidity-card location="Orchard (East)" mode="map" />
-                 </div>
+                <div class="h-full w-full">
+                    <x-humidity-card location="Orchard (East)" mode="map"/>
+                </div>
             </div>
 
         </div>
     </main>
 </div>
-
+<script>
+    lucide.createIcons();
+</script>
 </body>
 </html>
