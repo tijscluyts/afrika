@@ -45,19 +45,30 @@ class FarmingController extends Controller
         return view('profile', compact('farmer', 'sensors'));
     }
 
+    // 1. Map functie nu correct afgesloten
     public function map($id = null)
     {
-        // Verwijst naar resources/views/farm-map.blade.php
         return view('farm-map', ['id' => $id]);
+    }
 
     public function login(Request $request)
     {
         $email = $request->input('email');
         $id = match($email) {
-            'samuel@aggro.test' => 1, 'zendaya@aggro.test' => 2, 'kofi@aggro.test' => 3, 'amara@aggro.test' => 4, 'luka@aggro.test' => 5, default => rand(1, 5),
+            'samuel@aggro.test' => 1,
+            'zendaya@aggro.test' => 2,
+            'kofi@aggro.test' => 3,
+            'amara@aggro.test' => 4,
+            'luka@aggro.test' => 5,
+            default => rand(1, 5),
         };
         return redirect()->route('profile', ['id' => $id]);
     }
-    public function showLogin() { return view('login'); }
-    public function map() { return view('farm-map'); }
+
+    public function showLogin()
+    {
+        return view('login');
+    }
+
+    // De dubbele map() functie die hier stond is verwijderd.
 }

@@ -139,10 +139,6 @@
         <a href="/farm_map/{{ $farmer['id'] }}" class="group relative inline-flex items-center gap-3 bg-white border-2 border-slate-800 px-8 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.3em] hover:bg-slate-800 hover:text-white transition-all shadow-xl">
             <i data-lucide="map-pin" class="w-4 h-4 text-green-700 group-hover:text-white"></i>
             To Farm Map
-
-        <a href="/farm_map" class="group flex items-center gap-3 px-6 py-2.5 bg-slate-900 border border-slate-800 rounded-full text-white font-black text-[10px] uppercase tracking-[0.2em] hover:bg-green-700 hover:border-green-600 hover:shadow-[0_0_20px_rgba(21,128,61,0.4)] transition-all duration-300 active:scale-95">
-            <i data-lucide="map" class="w-4 h-4 group-hover:animate-bounce"></i>
-            <span>To Farm Map</span>
         </a>
     </div>
 
