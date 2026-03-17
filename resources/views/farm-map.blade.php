@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AggroCoders | Farm Map</title>
+    <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -65,8 +66,7 @@
 <nav
     class="sticky top-0 z-50 px-8 py-4 flex justify-between items-center bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
     <div class="flex items-center gap-2">
-        <!-- Direct link construction to ensure correct ID passing -->
-        <a href="{{ $id ? '/profile/'.$id : '/' }}" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <a href="{{ $id ? route('profile', ['id' => $id]) : '/' }}" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <div class="bg-green-700 p-2 rounded-xl text-white shadow-lg">
                 <i data-lucide="shield-check" class="w-6 h-6"></i>
             </div>
