@@ -148,7 +148,7 @@
                 <button @click="open = !open" class="w-full p-6 flex justify-between items-center hover:bg-slate-50 transition-colors">
                     <div class="flex items-center gap-6">
                         <div class="bg-slate-900 text-white w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg"><span class="text-2xl font-black font-mono">{{ $sensor['display_id'] }}</span></div>
-                        <div class="text-left"><p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Sensor Node {{ $sensor['id'] }}</p><h2 class="text-xl font-black uppercase tracking-tighter">{{ $sensor['name'] }}</h2></div>
+                        <div class="text-left"><p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Area {{ $sensor['id'] }}</p><h2 class="text-xl font-black uppercase tracking-tighter">{{ $sensor['name'] }}</h2></div>
                     </div>
                     <i data-lucide="chevron-down" class="transition-transform duration-500" :class="open ? 'rotate-180' : ''"></i>
                 </button>
