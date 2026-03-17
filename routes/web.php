@@ -3,5 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FarmingController;
 
-// Dit is de enige route die je nodig hebt voor de homepage
-Route::get('/', [FarmingController::class, 'index']);
+// Startpunt: De Login pagina
+Route::get('/', [FarmingController::class, 'showLogin'])->name('login');
+
+// Verwerk de login gegevens
+Route::post('/login', [FarmingController::class, 'login']);
+
+// Het persoonlijke dashboard van de boer
+Route::get('/profile/{id}', [FarmingController::class, 'profile'])->name('profile');
