@@ -89,4 +89,11 @@ class FarmingController extends Controller
 
         return view('profile', compact('farmer', 'liveData'));
     }
+
+    public function map()
+    {
+        // Verwijst naar resources/views/farm-map.blade.php
+        return view('farm-map');
+    }
+
 }

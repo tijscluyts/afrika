@@ -133,7 +133,7 @@
     </section>
 
     <div class="flex justify-center">
-        <a href="/farm_map" class="group relative inline-flex items-center gap-3 bg-white border-2 border-slate-800 px-8 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.3em] hover:bg-slate-800 hover:text-white transition-all shadow-xl">
+        <a href="{{ route('farmers.map') }}" class="group relative inline-flex items-center gap-3 bg-white border-2 border-slate-800 px-8 py-4 rounded-full font-black text-[11px] uppercase tracking-[0.3em] hover:bg-slate-800 hover:text-white transition-all shadow-xl">
             <i data-lucide="map-pin" class="w-4 h-4 text-green-700 group-hover:text-white"></i>
             To Farm Map
         </a>
